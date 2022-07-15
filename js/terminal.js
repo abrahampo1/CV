@@ -1,4 +1,7 @@
 const commands = {
+  reboot: {
+    desc: 'Reinicia el terminal',
+  },
   help: {
     desc: 'Obtiene una lista de comandos',
   },
@@ -24,7 +27,7 @@ const commands = {
     ],
   },
   skills: {
-    desc: 'Resumén de las capacidades',
+    desc: 'Resumen de las capacidades tecnicas',
     out: [
       'Leyenda:',
       '- Senior: Conocimiendo Máximo del lenguaje',
@@ -109,15 +112,14 @@ function input() {
     command(input.value)
   }
 }
-out(`CV_OS 2.1 Made by Abraham Leiro Fernandez `, 50).then((r) => {
-  out('Hola, Buenos dias, ingrese un comando por favor', 20).then(() => {
-    input()
-  })
-})
 
 function command(com) {
   log.push(com)
-  if (com.toLowerCase() == 'linkedin') {
+  com = com.toLowerCase()
+  if (com == 'reboot') {
+    boot()
+  }
+  if (com == 'linkedin') {
     window.open(
       'https://www.linkedin.com/in/abraham-leiro-fernandez-1848b6198/',
     )
@@ -174,7 +176,40 @@ function command(com) {
   }
 }
 
-function clear() {
+function clear(withInput = true) {
   document.getElementById('cp').innerHTML = ''
-  input()
+  if (withInput) {
+    input()
+  }
 }
+
+function boot() {
+  clear(false)
+  const boot_secuence = [
+    'booting up...........',
+    'loading database..........',
+    'connecting to main server..........',
+    'obtaining script sources..........',
+    'finished loading',
+    '--------------------------------------',
+    'CV_OS 2.1 hecho por Abraham Leiro Fernandez',
+    'Última actualicación: 16/07/2022 0:16',
+    'Hola, Buenos dias, ingrese un comando por favor ("help" o "?")',
+  ]
+
+  function send(command, i = 0) {
+    out(command).then(() => {
+      if (i == 5) {
+        clear(false)
+      }
+      if (boot_secuence[i + 1]) {
+        send(boot_secuence[i + 1], i + 1)
+      } else {
+        input()
+      }
+    })
+  }
+  send(boot_secuence[0])
+}
+
+boot()
