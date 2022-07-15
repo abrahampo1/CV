@@ -15,45 +15,57 @@ const commands = {
       'Programador full stack autodidacta con la capacidad de crear lo que puede imaginar y enseñar a los demás como hacerlo.',
     ],
   },
-  jobs:{
+  jobs: {
     desc: 'Obtiene los trabajos realizados',
-    out:[
-        '2018-AHORA : Software gestión lógistica Asociación viticultores Rías Baixas',
-        '2019-2020: Server Admin - Xunta De Galicia',
-        '2021-AHORA: Full Stack Developer - Rodapro SL'
-    ]
+    out: [
+      '2018-AHORA : Software gestión lógistica Asociación viticultores Rías Baixas',
+      '2019-2020: Server Admin - Xunta De Galicia',
+      '2021-AHORA: Full Stack Developer - Rodapro SL',
+    ],
   },
-  skills:{
+  skills: {
     desc: 'Resumén de las capacidades',
     out: [
-        'Leyenda:',
-        '- Senior: Conocimiendo Máximo del lenguaje',
-        '- Alto: Dominio del lenguaje',
-        '- Normal: Conocimiento general del lenguaje para realizar aplicaciones especificas',
-        '- Basico: Conocimiento basico del lenguaje para realizar pequeños trabajos',
-        '--------------------------------',
-        'HTML / CSS: Nivel Alto',
-        'JAVASCRIPT: Nivel Alto',
-        'PHP: Nivel Alto',
-        'PYTHON: Nivel Alto',
-        'NODEJS: Nivel Alto',
-        'C#: Nivel Normal',
-        '-',
-        'Nivel Alto de comprensión en frameworks (Laravel, React, Vue)'
-    ]
+      'Leyenda:',
+      '- Senior: Conocimiendo Máximo del lenguaje',
+      '- Alto: Dominio del lenguaje',
+      '- Normal: Conocimiento general del lenguaje para realizar aplicaciones especificas',
+      '- Basico: Conocimiento basico del lenguaje para realizar pequeños trabajos',
+      '--------------------------------',
+      'HTML / CSS: Nivel Alto',
+      'JAVASCRIPT: Nivel Alto',
+      'PHP: Nivel Alto',
+      'PYTHON: Nivel Alto',
+      'NODEJS: Nivel Alto',
+      'C#: Nivel Normal',
+      '-',
+      'Nivel Alto de comprensión en frameworks (Laravel, React, Vue)',
+    ],
   },
   contact: {
     desc: 'Obtiene las redes de contacto',
     out: [
       'LINKEDIN: https://www.linkedin.com/in/abraham-leiro-fernandez-1848b6198/',
       'INSTAGRAM: @abrahampo1',
-      'DISCORD: abrahampo1#0069'
+      'DISCORD: abrahampo1#0069',
     ],
   },
 }
 
+let log = []
+let curr_log = 0
+
 document.onclick = function (e) {
-    $('input:enabled').focus();
+  $('input:enabled').focus()
+}
+
+document.onkeydown = function (e) {
+  if (e.keyCode == 38) {
+    if (log[log.length - (curr_log+1)]) {
+      $('input:enabled').val(log[log.length- (curr_log+1)])
+      curr_log++
+    }
+  }
 }
 
 function out(text, speed = 20) {
@@ -69,7 +81,7 @@ function out(text, speed = 20) {
           p.classList.remove('writing')
           setTimeout(() => {
             resolve(p)
-          }, 200)
+          }, 100)
         }
       }, speed * i)
     }
@@ -87,6 +99,7 @@ function input() {
 
   input.onchange = () => {
     input.disabled = true
+    curr_log = 0
     command(input.value)
   }
 }
@@ -97,6 +110,7 @@ out(`CV_OS 2.1 Made by Abraham Leiro Fernandez `, 50).then((r) => {
 })
 
 function command(com) {
+  log.push(com)
   if (com == 'clear') {
     clear()
     return
