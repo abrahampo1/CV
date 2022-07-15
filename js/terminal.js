@@ -117,6 +117,9 @@ out(`CV_OS 2.1 Made by Abraham Leiro Fernandez `, 50).then((r) => {
 
 function command(com) {
   log.push(com)
+  if(com.toLowerCase() == 'linkedin'){
+    window.open('https://www.linkedin.com/in/abraham-leiro-fernandez-1848b6198/')
+  }
   if (com == 'clear') {
     clear()
     return
