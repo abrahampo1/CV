@@ -82,7 +82,7 @@ function out(text, speed = 20) {
     for (let i = 0; i < text.length; i++) {
       setTimeout(() => {
         p.innerHTML += text[i]
-        $('.screen').scrollTop($('.screen').height() + 10)
+        $('.screen').scrollTop($('#cp').height() * 2)
         if (i == text.length - 1) {
           p.classList.remove('writing')
           setTimeout(() => {
