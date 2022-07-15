@@ -61,9 +61,15 @@ document.onclick = function (e) {
 
 document.onkeydown = function (e) {
   if (e.keyCode == 38) {
-    if (log[log.length - (curr_log+1)]) {
-      $('input:enabled').val(log[log.length- (curr_log+1)])
+    if (log[log.length - (curr_log + 1)]) {
+      $('input:enabled').val(log[log.length - (curr_log + 1)])
       curr_log++
+    }
+  }
+  if (e.keyCode == 40) {
+    if (log[log.length - (curr_log - 1)]) {
+      $('input:enabled').val(log[log.length - (curr_log - 1)])
+      curr_log--
     }
   }
 }
