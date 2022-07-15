@@ -77,7 +77,7 @@ document.onkeydown = function (e) {
   }
 }
 
-function out(text, speed = 20) {
+function out(text, speed = 5) {
   return new Promise(function (resolve, reject) {
     let p = document.createElement('p')
     document.getElementById('cp').appendChild(p)
@@ -90,7 +90,7 @@ function out(text, speed = 20) {
           p.classList.remove('writing')
           setTimeout(() => {
             resolve(p)
-          }, 100)
+          }, 20)
         }
       }, speed * i)
     }
@@ -169,7 +169,7 @@ function command(com) {
       'Comando "' +
         com +
         '" no encontrado, use "help" para obtener una lista de comandos',
-      50,
+      20,
     ).then(() => {
       input()
     })
@@ -187,19 +187,20 @@ function boot() {
   clear(false)
   const boot_secuence = [
     'booting up...........',
-    'loading database..........',
-    'connecting to main server..........',
+    'Navigator provided by ' + navigator.vendor + '..........',
+    'Current platform ' + navigator["platform"] +'..........',
+    'is online? ' + navigator.onLine + '........',
     'obtaining script sources..........',
     'finished loading',
-    '--------------------------------------',
+    '-------------------------------------------------',
     'CV_OS 2.1 hecho por Abraham Leiro Fernandez',
     'Última actualicación: 16/07/2022 0:16',
     'Hola, Buenos dias, ingrese un comando por favor ("help" o "?")',
   ]
 
   function send(command, i = 0) {
-    out(command).then(() => {
-      if (i == 5) {
+    out(command, 20).then(() => {
+      if (i == 6) {
         clear(false)
       }
       if (boot_secuence[i + 1]) {
