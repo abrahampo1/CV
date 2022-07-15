@@ -56,7 +56,7 @@ document.onclick = function (e) {
     $('input:enabled').focus();
 }
 
-function out(text, speed = 50) {
+function out(text, speed = 20) {
   return new Promise(function (resolve, reject) {
     let p = document.createElement('p')
     document.getElementById('cp').appendChild(p)
@@ -69,7 +69,7 @@ function out(text, speed = 50) {
           p.classList.remove('writing')
           setTimeout(() => {
             resolve(p)
-          }, 500)
+          }, 200)
         }
       }, speed * i)
     }
