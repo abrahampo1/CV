@@ -1,4 +1,7 @@
 const commands = {
+  fullscreen: {
+    desc: 'Pone el terminal en pantalla completa',
+  },
   reboot: {
     desc: 'Reinicia el terminal',
   },
@@ -119,6 +122,13 @@ function command(com) {
   if (com == 'reboot') {
     boot()
   }
+
+  if (com == 'fullscreen' || com == 'fs') {
+    $('#comp').toggleClass('fs')
+    input()
+    return
+  }
+
   if (com == 'linkedin') {
     window.open(
       'https://www.linkedin.com/in/abraham-leiro-fernandez-1848b6198/',
@@ -128,10 +138,29 @@ function command(com) {
     })
     return
   }
-  if (com == 'clear') {
+  if (com == 'clear' || com == 'cls') {
     clear()
     return
   }
+  if (com == 'update') {
+    location.reload()
+    return
+  }
+
+  if (com == 'bozo') {
+    function send(command, i = 0) {
+      out(command).then(() => {
+        if (i < 50) {
+          send(command, i + 1)
+        } else {
+          input()
+        }
+      })
+    }
+    send('L')
+    return
+  }
+
   if (com == 'about') {
     let img = document.createElement('img')
     img.src = 'img/me.png'
@@ -188,7 +217,7 @@ function boot() {
   const boot_secuence = [
     'booting up...........',
     'Navigator provided by ' + navigator.vendor + '..........',
-    'Current platform ' + navigator["platform"] +'..........',
+    'Current platform ' + navigator['platform'] + '..........',
     'is online? ' + navigator.onLine + '........',
     'obtaining script sources..........',
     'finished loading',
@@ -199,7 +228,7 @@ function boot() {
   ]
 
   function send(command, i = 0) {
-    out(command, 20).then(() => {
+    out(command, 10).then(() => {
       if (i == 6) {
         clear(false)
       }
