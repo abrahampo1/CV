@@ -18,7 +18,7 @@ const commands = {
       'EMAIL: abraham@cpsoftware.es',
       'PHONE: +34634384415',
       'DESCRIPTION:',
-      'Programador full stack autodidacta con la capacidad de crear lo que puede imaginar y enseñar a los demás como hacerlo.',
+      'Programador full stack.',
     ],
   },
   jobs: {
