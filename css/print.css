@@ -1,0 +1,18 @@
+.card .card-title {
+    font-size: 25px;
+}
+
+.card {
+    padding: 4px;
+}
+
+@media print {
+    div {
+        break-inside: avoid;
+    }
+}
+
+div {
+    page-break-inside: avoid;
+}
+

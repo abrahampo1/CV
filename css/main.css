@@ -1,192 +1,77 @@
-@keyframes flicker {
-    0% {
-      opacity: 0.27861;
-    }
-    5% {
-      opacity: 0.34769;
-    }
-    10% {
-      opacity: 0.23604;
-    }
-    15% {
-      opacity: 0.90626;
-    }
-    20% {
-      opacity: 0.18128;
-    }
-    25% {
-      opacity: 0.83891;
-    }
-    30% {
-      opacity: 0.65583;
-    }
-    35% {
-      opacity: 0.67807;
-    }
-    40% {
-      opacity: 0.26559;
-    }
-    45% {
-      opacity: 0.84693;
-    }
-    50% {
-      opacity: 0.96019;
-    }
-    55% {
-      opacity: 0.08594;
-    }
-    60% {
-      opacity: 0.20313;
-    }
-    65% {
-      opacity: 0.71988;
-    }
-    70% {
-      opacity: 0.53455;
-    }
-    75% {
-      opacity: 0.37288;
-    }
-    80% {
-      opacity: 0.71428;
-    }
-    85% {
-      opacity: 0.70419;
-    }
-    90% {
-      opacity: 0.7003;
-    }
-    95% {
-      opacity: 0.36108;
-    }
-    100% {
-      opacity: 0.24387;
-    }
-  }
- 
-  .crt::after {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(18, 16, 16, 0.1);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
-  }
-  .crt::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-  }
-  .crt {
-  }
-
-  body, html{
-    background-color: rgb(100, 100, 100);
-    color: green;
-    padding: 50px;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  *{
-    font-family: 'Courier New';
-    text-shadow: 0.4389924193300864px 0 1px rgba(0, 255, 0, 0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-
-  }
-
-  *::-webkit-scrollbar { width: 0 !important }
-  p{
-    font-size:15px;
-  }
-
-.logo{
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-    font-size: 60px;
-    width: 100%;
-    text-align: center;
-    text-shadow: 0.4389924193300864px 0 1px rgba(83, 83, 83, 0.5), -0.4389924193300864px 0 1px rgba(23, 23, 23, 0.3), 0 0 3px;
-    color: rgb(32, 32, 32);
-    background-color: rgb(81, 81, 81);
+*{
+  font-family: 'Roboto', sans-serif;
 }
 
-  .comp{
-    width: 100%;
-    height: 100%;
-    border: 20px solid grey;
-    padding: 10px;
-    box-sizing: border-box;
-    position: relative;
-    background-color: black;
-    border-radius: 10px;
-  }
+html, body{
+  background-color: whitesmoke;
+}
 
-  .screen{
-    overflow-y: auto;
+ .card {
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform .2s;
+}
 
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-  }
+.card .card:hover{
+  transform: scale(1.2);
+}
 
-  .writing::after{
-    content: '_';
-  }
+.card .data{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 20px;
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+}
 
-  input{
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 15px;
-    background-color: transparent;
-    border: none;
-    color: green;
-  }
+.card-subtitle li{
+  margin: 15px;
+}
 
-  input::before{
-    content: '>';
-  }
+.card.card30{
+  width: 30%;
+}
 
-  input:focus{
-    outline: none;
-  }
+.card.card70{
+  width: 70%;
+}
 
-  .input{
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-  }
+.card-image{
+  margin: 20px;
+}
 
+.card-image img{
+  border-radius: 50%;
+}
 
-  .note{
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    z-index: 100;
-  }
+.card-holder{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 
-  .fs{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+.card .card.card30{
+  width: 33.33%;
+}
+
+.card.card100{
+  width: 100%;
+}
+
+.card-title{
+  font-size: 30px;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.card-subtitle{
+  color: gray;
+  font-weight: 400;
+}
+
+a.card{
+  text-decoration: none;
+  color: black;
 }
